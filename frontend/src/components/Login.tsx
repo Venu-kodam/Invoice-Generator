@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import loginimage1 from "../assets/loginimage1.png"
 import loginimage2 from "../assets/loginimage2.jpg"
 import logo from "../assets/logo.png"
@@ -10,7 +10,6 @@ import { useForm } from 'react-hook-form'
 import z from 'zod'
 import axios from "axios"
 import { toast } from 'sonner'
-import { useNavigate } from 'react-router-dom'
 import { useAppContext } from '../Context/appContext'
 
 const images: string[] = [
@@ -28,8 +27,6 @@ type FormData = z.infer<typeof formSchema>;
 
 const Login = () => {
     const [current, setCurrent] = useState<number>(0);
-    const [submittedData, setSubmittedData] = useState<FormData | null>(null);
-
     const{navigate,API_BASE_URL} = useAppContext()
     // Auto slide every 4 seconds
     useEffect(() => {
@@ -41,9 +38,6 @@ const Login = () => {
 
     const {
         register,
-        control,
-        getValues,
-        setValue,
         formState: { errors },
         handleSubmit
     } = useForm<FormData>({

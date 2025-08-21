@@ -4,7 +4,7 @@ import { Button } from './ui/button'
 import { Link, useLocation } from 'react-router-dom'
 const Navbar = () => {
   const location = useLocation();
-  const { token, setToken, navigate,logout } = useAppContext()
+  const { navigate,logout } = useAppContext()
 
   return (
     <div className='bg-[#1F1F1F] px-4 sm:px-20 flex items-center justify-between py-4 '>

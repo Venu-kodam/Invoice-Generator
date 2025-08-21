@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Label } from './ui/label'
 import { Input } from './ui/input'
 import signupimage from "../assets/signupimage1.png"
@@ -21,14 +21,10 @@ const formSchema = z.object({
 type FormData = z.infer<typeof formSchema>;
 
 const Signup = () => {
-    const [submittedData, setSubmittedData] = useState<FormData | null>(null);
-    const{navigate,API_BASE_URL,setToken,token} = useAppContext()
+    const{navigate,API_BASE_URL,setToken} = useAppContext()
 
     const {
         register,
-        control,
-        getValues,
-        setValue,
         formState: { errors },
         reset,
         handleSubmit

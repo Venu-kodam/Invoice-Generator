@@ -8,7 +8,6 @@ A full-stack invoice generator application built with **React**, **TypeScript**,
 
 - [Features](#features)  
 - [Tech Stack](#tech-stack)  
-- [Project Structure](#project-structure)  
 - [Installation](#installation)  
 - [Usage](#usage)  
 - [Demo](#demo)  
@@ -32,31 +31,6 @@ A full-stack invoice generator application built with **React**, **TypeScript**,
 - **Other Tools:** axios, sonner for toast notifications .  
 
 ---
-
-## Project Structure
-
-frontend/
-├── src/
-│ ├── assets/ - Images and icons
-│ ├── components/ - React components (Signup,Login, Products, Invoice, Navbar)
-│ ├── Context/ - App context for global state
-│ ├── App.tsx -  Main entry component
-│ └── main.tsx
-backend/
-├── config/
-│ └── db.js  - DB connection
-├── models/ - Mongoose models
-│ └── Product.js
-│ └── User.js
-│ └── Invoice.js
-├── routes/ # API routes
-│ ├── invoiceRoute.js
-│ └── productRoutes.js
-│ └── userRoutes.js
-├── middleware/ - Auth middleware
-│ └── auth.js
-├── .env - environment variables
-└── server.js - Express server setup
 
 ## Installation
 

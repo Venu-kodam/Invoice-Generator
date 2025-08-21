@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import ReactDOMServer from "react-dom/server";
 import { Label } from './ui/label'
 import { Input } from './ui/input'
@@ -18,10 +18,10 @@ import { useAppContext } from '../Context/appContext';
 const productSchema = z.object({
     name: z.string().min(2, "Product name must be at least 2 characters"),
     price: z
-        .number({ invalid_type_error: "Price must be a number" })
+        .number()
         .positive("Price must be greater than 0"),
     quantity: z
-        .number({ invalid_type_error: "Quantity must be a number" })
+        .number()
         .int("Quantity must be an integer")
         .positive("Quantity must be greater than 0"),
 });

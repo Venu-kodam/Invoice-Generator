@@ -1,5 +1,3 @@
-import React from "react";
-import logoblack from "../assets/logoblack.png"
 import { format } from "date-fns";
 
 const Invoice = ({ user, products }: any) => {
