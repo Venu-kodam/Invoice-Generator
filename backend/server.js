@@ -12,11 +12,15 @@ const PORT = process.env.PORT || 4000
 const app = express()
 
 app.use(express.json())
-app.use(cors())
+app.use(cors({
+    origin: "https://invoice-generator-frotend.vercel.app", // <-- your frontend URL
+    methods: ["GET", "POST", "PUT", "DELETE"]
+}));
+
 connectDB()
 
 //api end points
-app.get('/',(req,res)=>res.send('API working'))
+app.get('/', (req, res) => res.send('API working'))
 
 // Routes
 app.use("/api/auth", userRouter);
@@ -24,6 +28,6 @@ app.use("/api/products", productRouter);
 app.use("/api", invoiceRouter);
 
 
-app.listen(PORT,()=>console.log(`Server started on http://localhost:${PORT}`))
+app.listen(PORT, () => console.log(`Server started on http://localhost:${PORT}`))
 
 
