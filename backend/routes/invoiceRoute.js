@@ -1,6 +1,7 @@
 import express from "express"
 import Invoice from "../models/Invoice.js";
-import puppeteer from "puppeteer";
+import puppeteer from "puppeteer-core";
+import chromium from "chrome-aws-lambda";
 import authUser from "../middleware/auth.js";
 
 const invoiceRouter = express.Router()
@@ -22,15 +23,33 @@ invoiceRouter.post('/generate-invoice', authUser, async (req, res) => {
         await newInvoice.save();
 
 
-        const browser = await puppeteer.launch({
-            headless: true,
-            args: [
-                "--no-sandbox",
-                "--disable-setuid-sandbox",
-                "--disable-dev-shm-usage",
-                "--single-process",
-            ], // required in many servers (Heroku, Render, Vercel, etc.)
-        });
+        // const browser = await puppeteer.launch({
+        //     args: chromium.args,
+        //     defaultViewport: chromium.defaultViewport,
+        //     executablePath: await chromium.executablePath,
+        //     headless: chromium.headless,
+        // });
+
+        const getBrowser = async () => {
+            if (process.env.NODE_ENV === "production") {
+                // Render deployment
+                return puppeteer.launch({
+                    args: chromium.args,
+                    defaultViewport: chromium.defaultViewport,
+                    executablePath: await chromium.executablePath,
+                    headless: chromium.headless,
+                });
+            } else {
+                // Local development
+                const executablePath = "C:/Program Files/Google/Chrome/Application/chrome.exe"; // <-- replace with your Chrome path
+                return puppeteer.launch({
+                    headless: true,
+                    executablePath,
+                    args: ["--no-sandbox", "--disable-setuid-sandbox"],
+                });
+            }
+        };
+        const browser = await getBrowser();
         const page = await browser.newPage();
         const tailwindCDN = `<script src="https://cdn.tailwindcss.com"></script>`;
         await page.setContent(`${tailwindCDN} ${html}`, { waitUntil: "networkidle0" });

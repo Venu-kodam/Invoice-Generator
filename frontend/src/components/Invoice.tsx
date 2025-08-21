@@ -1,4 +1,5 @@
 import { format } from "date-fns";
+import Logo from "./ui/Logo";
 
 const Invoice = ({ user, products }: any) => {
     const subTotal = products.reduce((acc: number, p: any) => acc + p.price * p.quantity, 0);
@@ -12,7 +13,7 @@ const Invoice = ({ user, products }: any) => {
             <div className='px-8'>
                 <div className='flex items-center justify-between  border-b py-4 my-4'>
                     <div className='flex items-center gap-2'>
-                        
+                        <Logo />
                         <div className='text-black'>
                             <p className='text-2xl'>levitation</p>
                             <p className='text-xs'>infotech</p>
@@ -38,7 +39,7 @@ const Invoice = ({ user, products }: any) => {
                         <button className="text-black bg-white rounded-full px-4 py-2">{user?.email}</button>
                     </div>
                 </div>
-                <table style={{borderCollapse:"collapse"}} className="my-4 w-full ">
+                <table style={{ borderCollapse: "collapse" }} className="my-4 w-full ">
                     <thead style={{
                         backgroundImage: "linear-gradient(to right, #303661, #263406)",
                         color: "white"
@@ -67,7 +68,7 @@ const Invoice = ({ user, products }: any) => {
                                     backgroundColor: index % 2 === 0 ? "#ffffff" : "#fafafa",
                                 }} className="rounded-full">
                                 <td style={{
-                                    padding: "16px", 
+                                    padding: "16px",
                                     borderTopLeftRadius: "9999px",
                                     borderBottomLeftRadius: "9999px",
                                 }}>{product.name}</td>

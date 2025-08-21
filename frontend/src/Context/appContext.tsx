@@ -26,7 +26,6 @@ export default function AppContextProvider({ children }: AppContextProviderProps
     //function to logout
     const logout = () => {
         localStorage.removeItem('token')
-        toast.error("User Logged out")
         setToken('')
     }
 
