@@ -12,7 +12,7 @@ const Invoice = ({ user, products }: any) => {
             <div className='px-8'>
                 <div className='flex items-center justify-between  border-b py-4 my-4'>
                     <div className='flex items-center gap-2'>
-                        <img src="/logoblack.png" alt="logo" style={{ width: "40px", height: "40px" }} />
+                        
                         <div className='text-black'>
                             <p className='text-2xl'>levitation</p>
                             <p className='text-xs'>infotech</p>
