@@ -25,10 +25,11 @@ invoiceRouter.post('/generate-invoice', authUser, async (req, res) => {
         const getBrowser = async () => {
             if (process.env.NODE_ENV === "production") {
                 // Render or other serverless production environment
+                const executablePath = await chromium.executablePath || "/usr/bin/google-chrome";
                 return puppeteer.launch({
                     args: chromium.args,
                     defaultViewport: chromium.defaultViewport,
-                    executablePath: await chromium.executablePath,
+                    executablePath,
                     headless: chromium.headless,
                 });
             } else {
