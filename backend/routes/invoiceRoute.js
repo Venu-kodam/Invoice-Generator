@@ -22,17 +22,9 @@ invoiceRouter.post('/generate-invoice', authUser, async (req, res) => {
 
         await newInvoice.save();
 
-
-        // const browser = await puppeteer.launch({
-        //     args: chromium.args,
-        //     defaultViewport: chromium.defaultViewport,
-        //     executablePath: await chromium.executablePath,
-        //     headless: chromium.headless,
-        // });
-
         const getBrowser = async () => {
             if (process.env.NODE_ENV === "production") {
-                // Render deployment
+                // Render or other serverless production environment
                 return puppeteer.launch({
                     args: chromium.args,
                     defaultViewport: chromium.defaultViewport,
@@ -40,15 +32,11 @@ invoiceRouter.post('/generate-invoice', authUser, async (req, res) => {
                     headless: chromium.headless,
                 });
             } else {
-                // Local development
-                const executablePath = "C:/Program Files/Google/Chrome/Application/chrome.exe"; // <-- replace with your Chrome path
-                return puppeteer.launch({
-                    headless: true,
-                    executablePath,
-                    args: ["--no-sandbox", "--disable-setuid-sandbox"],
-                });
+                const puppeteerFull = await import("puppeteer"); // full puppeteer
+                return puppeteerFull.launch({ headless: true });
             }
         };
+
         const browser = await getBrowser();
         const page = await browser.newPage();
         const tailwindCDN = `<script src="https://cdn.tailwindcss.com"></script>`;
