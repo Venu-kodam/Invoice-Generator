@@ -12,7 +12,7 @@ const Invoice = ({ user, products }: any) => {
             <div className='px-8'>
                 <div className='flex items-center justify-between  border-b py-4 my-4'>
                     <div className='flex items-center gap-2'>
-                        <img src="/logoblack.png" alt="logo" style={{ width: "40px", height: "40px" }} />
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAlCAYAAAAqXEs9AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAHNSURBVHgBvZeNbcIwEIUvnSAb1CNkhIzABs4GsIHZADYIGzBCRkg3sDpBukGaR2VEXf/70iedQLJ9efdxPqChuNotOqrX1xYfxKBpi5UhFvoprko9kxkTiio1MhuqoiSYzVRT4qZTRUnsZKaY0rizoSxKguOhbduyURp9SYQQWaaklNmU3ugvnYE82h5AOWqahvq+9y3DzJEi8tK5Xq/ZhBDzPIfOBXtJ+JKeTqd1HMdsM4hhGFatdainjll0UB1UQscEDE3T5FvXyXRgAslK6bxSgi6Xi2+PTKJzv9+r6bxSgvDxxygJV4Lz+fxIUEvHprQsy9p1XZDSaC8eDofViIOOTQmvjryzMTTbB9GAEK4slxmEUupZqIf845epshe2YfY8iPf/REgbQhhMi30YzQcFrmtxD3naQNKLlCvJ7XZjo2TooD8d65osOSlhukaGWhYd9JBnjySHlGsz8AJzDSUUFRiKmjxyUjIVllJK+C6TFJDyJUaFJZRQSGCWaYrIS8mYyjEDOp6pnEQnSgmVRh7wKzw3KplOEiXGkJQhtbMZTZnam5KkAqmdzGgq1F6Uov80QuKmBDqCKsRNSRGDuCgl0WkoTe/Eo8/Yhm9Z2zkuYo8K/wAAAABJRU5ErkJggg==" alt="logo" style={{ width: "40px", height: "40px" }} />
                         <div className='text-black'>
                             <p className='text-2xl'>levitation</p>
                             <p className='text-xs'>infotech</p>
