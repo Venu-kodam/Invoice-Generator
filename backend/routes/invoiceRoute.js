@@ -24,7 +24,12 @@ invoiceRouter.post('/generate-invoice', authUser, async (req, res) => {
 
         const browser = await puppeteer.launch({
             headless: true,
-            args: ["--no-sandbox", "--disable-setuid-sandbox"], // required in many servers (Heroku, Render, Vercel, etc.)
+            args: [
+                "--no-sandbox",
+                "--disable-setuid-sandbox",
+                "--disable-dev-shm-usage",
+                "--single-process",
+            ], // required in many servers (Heroku, Render, Vercel, etc.)
         });
         const page = await browser.newPage();
         const tailwindCDN = `<script src="https://cdn.tailwindcss.com"></script>`;
