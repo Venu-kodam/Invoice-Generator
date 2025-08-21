@@ -1,7 +1,7 @@
 import express from "express"
 import Invoice from "../models/Invoice.js";
 import puppeteer from "puppeteer-core";
-import chromium from "chrome-aws-lambda";
+import chromium from "@sparticuz/chromium";
 import authUser from "../middleware/auth.js";
 
 const invoiceRouter = express.Router()
@@ -25,11 +25,10 @@ invoiceRouter.post('/generate-invoice', authUser, async (req, res) => {
         const getBrowser = async () => {
             if (process.env.NODE_ENV === "production") {
                 // Render or other serverless production environment
-                const executablePath = await chromium.executablePath || "/usr/bin/google-chrome";
                 return puppeteer.launch({
                     args: chromium.args,
                     defaultViewport: chromium.defaultViewport,
-                    executablePath,
+                    executablePath: await chromium.executablePath(),
                     headless: chromium.headless,
                 });
             } else {
