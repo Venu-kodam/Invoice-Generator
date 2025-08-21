@@ -1,6 +1,5 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
 import { useNavigate, type NavigateFunction } from "react-router-dom";
-import { toast } from "sonner";
 
 interface AppContextType {
     navigate: NavigateFunction;
